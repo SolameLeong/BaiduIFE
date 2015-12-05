@@ -1,5 +1,5 @@
 
-#top{
+#top {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -9,12 +9,12 @@
     z-index: +1;
 }
 
-.word{
+.word {
     font-family: Helvetica;
     color: white;
 }
 
-.index{
+.index {
     position: relative;
     top: 8px;
     left: 30px;
@@ -24,7 +24,7 @@
     padding-left: 10px;
 }
 
-.childIndex{
+.childIndex {
     height: auto;
     width: 130px;
     padding-left: 10px;
@@ -33,45 +33,50 @@
     padding-left: 10px;
 }
 
-#ingredient{
+#ingredient {
     display: none;;
     position: absolute;
     top: 50px;
     left: 30px;
 }
-#cuisine{
+
+#cuisine {
     display: none;
     position: absolute;
     top: 50px;
     left: 170px;
 }
-#meal{
+
+#meal {
     display: none;
     position: absolute;
     top: 50px;
     left: 310px;
 }
-#cooking{
+
+#cooking {
     display: none;
     display: none;
     position: absolute;
     top: 50px;
     left: 450px;
 }
-#dish{
+
+#dish {
     display: none;
     position: absolute;
     top: 50px;
     left: 590px;
 }
-#theme{
+
+#theme {
     display: none;
     position: absolute;
     top: 50px;
     left: 730px;
 }
 
-img{
+img {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -79,7 +84,8 @@ img{
     height: 800px;
     z-index: -2;
 }
-#bgd{
+
+#bgd {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -90,22 +96,24 @@ img{
     z-index: -1;
 }
 
-#myName{
+#myName {
     padding-left: 100px;
     padding-top: 150px;
     font-size: 150px;
 }
-#introduce{
+
+#introduce {
     padding-left: 320px;
     font-size: 30px;
 }
 
-
-#imgII{
+#imgII {
     position: absolute;
     top: 800px;
 }
-#partII{
+
+#partII {
+    display: flex;
     position: absolute;
     top: 800px;
     right: 0px;
@@ -114,12 +122,9 @@ img{
     height: 800px;
 }
 
-.pII {
-    display: flex;
-    justify-content: center;
-    align-items:center;
+#pII {
     font-size: 20px;
     font-family: Helvetica;
-
+    margin: auto;
 }
 
