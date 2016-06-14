@@ -1,0 +1,13 @@
+{
+  "data": [
+    {
+      "email": null,
+      "psw": null,
+      "pswRepeat": null,
+      "gender": null,
+      "city": null,
+      "hobby": null,
+      "selfIntro": null
+    }
+  ]
+}
