@@ -22,8 +22,8 @@ function addAqiData() {
 
     if (isNaN(cityIn) === false) {
         window.alert("请在城市一栏中填入汉字或英语。");
-    } else if (Boolean(aqiIn) === false || isNaN(aqiIn) === true) {
-        window.alert("请在空气质量一栏中填入纯数字。");
+    } else if (Boolean(aqiIn) === false || isNaN(aqiIn) === true || aqiIn%1 !== 0) {
+        window.alert("请在空气质量一栏中填入纯整数。");
     } else {
         aqiData[cityIn] = aqiIn;
         renderAqiList();
