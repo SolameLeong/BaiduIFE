@@ -7,14 +7,15 @@ var data = [];
 function renderImg() {
     var img = '';
     for (var i = 0; i < data.length; i ++) {
-        var iden = 'data' + i.toString();
-        img += '<div id=\"' + iden + '\">' + data[i] + '</div>';
+        var id = 'data' + i.toString();
+        img += '<div id=\"' + id + '\">' + data[i] + '</div>';
     }
-    document.write(img);
+    document.getElementById('chart').innerHTML = img;
 }
 
 function leftIn() {
-    var input = document.getElementById('leftIn').value;
+    var input = document.getElementById('numIn').value;
+    console.log(input);
     if (data.length !== 0) {
         for (var i = data.length - 1; i >= 0; i--) {
             data[i + 1] = data[i];
@@ -25,17 +26,19 @@ function leftIn() {
 }
 
 function rightIn() {
-    data[data.length] = document.getElementById('rightIn').value;
+    data[data.length] = document.getElementById('numIn').value;
     renderImg();
 }
 
 function leftOut() {
-    alert(data[0]);
-    delete data[0];
+    var del = data.shift();
+    alert(del);
     renderImg();
 }
 
 function rightOut() {
-    alert(data[data.length - 1]);
-    delete data[data.length - 1];
+    var del = data.pop();
+    alert(del);
+    renderImg();
 }
+
