@@ -1,3 +1,7 @@
 #chart div{
-    display: inline-block;
+    display: inline;
+    height: 20px;
+    width: 20px;
+    border-color: black;
+    border-style: solid;
 }
