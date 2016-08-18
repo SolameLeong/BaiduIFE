@@ -63,7 +63,6 @@ function renderChart(data) {
     }
     area.innerHTML = chart;
     for (key in data) {
-        console.log(document.getElementById(key));
         aqi = data[key].toString().concat('px');
         document.getElementById(key).style.height = aqi;
     }
@@ -75,7 +74,6 @@ function renderChart(data) {
  */
 function graTimeChange() {
     // 确定是否选项发生了变化
-    console.log('time check');
     var options = document.getElementsByName('gra-time');
     for (var i = 0; i < options.length; i ++) {
         if (options[i].checked) {
@@ -137,59 +135,62 @@ function initCitySelector() {
 function initAqiChartData() {
     // 将原始的源数据处理成图表需要的数据格式
     // 处理好的数据存到 chartData 中
-    var i, count, sum, key, date;
-    var averageCount = {}, cityData = {};
+    var city, date, check, sum, key, count, month, daysCount;
     //daily data
-    chartData['day'] = aqiSourceData;
+    chartData.day = aqiSourceData;
     //weekly data;
-    for (var city in aqiSourceData) {
-        i = 0;
-        count = 0;
+    chartData.week = {};
+    for (city in aqiSourceData) {
+        check = 0;
         sum = 0;
-        for (var days in aqiSourceData[city]) {
-            if (i < 7) {
-                sum += aqiSourceData[city][days];
-                i ++;
+        count = 0
+        chartData['week'][city] = {};
+        for (date in aqiSourceData[city]) {
+            if (check < 7) {
+                sum += aqiSourceData[city][date];
+                check ++;
             } else {
+                sum = Math.ceil(sum / 7);
                 key = 'week'.concat(count.toString());
-                averageCount[key] = sum / 7;
-                count++;
+                chartData['week'][city][key] = sum;
+                check = 0;
                 sum = 0;
-                i = 0;
+                count ++;
             }
         }
+        sum = Math.ceil(sum / 7);
         key = 'week'.concat(count.toString());
-        averageCount[key] = sum / 7;
-        cityData[city] = averageCount;
+        chartData['week'][city][key] = sum;
     }
-    chartData['week'] = cityData;
     //monthly data
-    averageCount = {};
-    cityData = {};
-    for (var cityM in aqiSourceData) {
-        i = 0;
-        count = 0;
+    chartData.month = {};
+    var monthName = ['January', 'February', 'March', 'April', 'May', 'June'];
+    for (city in aqiSourceData) {
         sum = 0;
-        date = Object.keys(aqiSourceData[cityM]);
-        var month = date[0].substr(5, 2);
-        for (var dayM in aqiSourceData[cityM]) {
-            var dateMonth = date[i].substr(5, 2);
-            if (dateMonth === month) {
-                sum += aqiSourceData[cityM][dayM];
-                i ++;
+        daysCount = 0;
+        count = 0;
+        month = '01';
+        chartData['month'][city] = {};
+        for (date in aqiSourceData[city]) {
+            check = date.substr(5, 2);
+            if (month === check) {
+                sum += aqiSourceData[city][date];
+                daysCount ++;
             } else {
-                key = 'month'.concat(count.toString());
-                averageCount[key] = sum / i;
+                month = check;
+                sum = Math.ceil(sum / daysCount);
+                console.log(sum);
+                key = monthName[count];
+                chartData['month'][city][key] = sum;
                 count ++;
                 sum = 0;
-                i = 0;
+                daysCount = 0;
             }
         }
-        key = 'month'.concat(count.toString());
-        averageCount[key] = sum / i;
-        cityData[city] = averageCount;
+        sum = Math.ceil(sum / daysCount);
+        key = monthName[count];
+        chartData['month'][city][key] = sum;
     }
-    chartData['month'] = cityData;
 }
 
 /**
