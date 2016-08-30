@@ -1,0 +1,22 @@
+#chart{
+    height: 100px;
+    position: relative;
+    top: 50px;
+}
+#sortChart{
+    height: 100px;
+    position: relative;
+    top: 150px;
+}
+
+#chart > div{
+    vertical-align: bottom;
+    display: inline-block;
+    width: 15px;
+    background-color: darkolivegreen;
+}
+#sortChart div{
+    width: 15px;
+    display: inline-block;
+    background-color: chocolate;
+}
